@@ -38,7 +38,7 @@ public class SMSSender {
 
       return String.format(
               "%1$s:\n" +
-              "https://www.google.com/maps/search/?api=1&query=%2$s,%3$s\n" +
+              "%2$s,%3$s\n" +
               "Accuracy: %4$s m\n" +
               "Speed: %5$s km/h",
               descriptionString,
