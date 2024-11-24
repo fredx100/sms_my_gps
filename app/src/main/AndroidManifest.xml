@@ -6,9 +6,11 @@
         android:name="android.hardware.location"
         android:required="true" />
 
+ <!--
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.QUICKBOOT_POWERON" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+ -->
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -20,22 +22,35 @@
         android:icon="@drawable/ic_location_192"
         android:label="@string/app_name">
 
+    <!--
         <receiver
             android:name=".events.BootReceiver"
             android:enabled="true"
-            android:exported="false">
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
+    -->
 
+        <receiver
+            android:name=".events.SMSReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="100000000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+<!--
         <service
             android:name=".events.ForegroundService"
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="location" />
+-->
 
         <activity
             android:name=".activity.MainActivity"

@@ -321,7 +321,6 @@ public final class GPSSender {
       Log.i(TAG, "Provider '" + provider + "' not enabled");
       result.pending = false;
       lastKnownResult.pending = false;
-      notifyResults();
       return;
     }
 
